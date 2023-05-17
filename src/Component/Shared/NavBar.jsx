@@ -66,14 +66,16 @@ export default function NavBar() {
   return (
     <>
       <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900">
+        <div className="flex items-center justify-between text-blue-gray-900"><div className="flex justify-center items-center">
+        <img src={'https://i.ibb.co/swxphkf/heroIcon.png'}  alt="" className="w-20 rounded-full"/>
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium"
-          >
-            Material Tailwind
+            className="mr-4 cursor-pointer p-1.5  font-semibold"
+          > 
+           SuperHero Toys
           </Typography>
+        </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <Button

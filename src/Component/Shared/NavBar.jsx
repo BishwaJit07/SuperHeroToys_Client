@@ -91,14 +91,7 @@ export default function NavBar() {
       </Typography>
      
            <div className='tooltip tooltip-bottom tooltip-warning ' data-tip={user && user.displayName }>
-          { user &&  <Avatar
-            variant="circular"
-            size="sm"
-            alt="candice wu"
-            className="border border-blue-500 p-0.5"
-            src={user.photoUrl}
-            
-          /> }
+          { user &&    <Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" />}
           </div>
 
 

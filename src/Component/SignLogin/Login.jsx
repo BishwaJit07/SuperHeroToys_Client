@@ -8,11 +8,11 @@ import {
   } from "@material-tailwind/react";
 import { useContext } from "react";
   import {SiGoogle } from "react-icons/si";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
   import { AuthContext } from '../../Provider/Authprovider';
 
 const Login = () => {
-  const {signIn}= useContext(AuthContext);
+  const {signIn,signInGoogle}= useContext(AuthContext);
   const location = useLocation();
   const from = location.state?.from?.pathname  || '/';
 
@@ -37,23 +37,35 @@ const Login = () => {
       .catch(error => console.log(error))
 
   }
+  const handleGoogleLogin =()=>{
+    signInGoogle()
+    .then(result=>{
+        const user= result.user;
+        console.log(user);
+        navigate(from ,{replace : true});
+    })
+    .catch(error=>{
+        console.log(error.message);
+        setError('An error occured.Try Again')
+    })
+  }
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col md:flex-row justify-center items-center p-4">
         <div>
-            <img src={"https://i.ibb.co/TWhKLdd/xjkg0ky4.png"} alt=""  />
+            <img src={"https://i.ibb.co/TWhKLdd/xjkg0ky4.png"} alt=""  className="rounded-xl"/>
         </div>
          <div className="p-4"><Card color="transparent" shadow={false}>
-  <Typography variant="h4" color="blue-gray">
+  <Typography variant="h4" color="white">
     Log in
   </Typography>
-  <Typography color="gray" className="mt-1 font-normal">
+  <Typography color="gray" className="mt-1 font-normal text-white">
     Enter your details to LogIn.
   </Typography>
   <form onSubmit={handleLogIn} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-    <div className="mb-4 flex flex-col gap-6">
+    <div className="mb-4 flex flex-col gap-6 ">
      
-      <Input size="lg" label="Email" name="email"/>
-      <Input type="password" size="lg" label="Password" name="pass"/>
+      <Input size="lg" label="Email" name="email" className="text-white"/>
+      <Input type="password" size="lg" label="Password" name="pass" className="text-white"/>
     </div>
     <Checkbox
       label={
@@ -61,7 +73,7 @@ const Login = () => {
           <Typography
             variant="small"
             color="gray"
-            className="flex items-center font-normal"
+            className="flex items-center font-normal text-white"
           >
             I agree the
             <a
@@ -78,17 +90,17 @@ const Login = () => {
     <Button type="submit" className="mt-6" fullWidth>
       Log In
     </Button>
-    <p className='m-2 text-center'>Or Sign In with</p>
-  <div className='flex justify-center '> <SiGoogle/> </div>
+    <div className='m-2 text-center text-white'>Or Sign In with</div>
+  <div className='btn btn-ghost flex justify-center text-blue-300' onClick={handleGoogleLogin}> < SiGoogle/> </div>
 
-    <Typography color="gray" className="mt-4 text-center font-normal">
+    <Typography color="gray" className="mt-4 text-center font-normal text-white">
       Already have an account?{" "}
-      <a
-        href="#"
+      <Link
+        to="/signup"
         className="font-medium text-blue-500 transition-colors hover:text-blue-700"
       >
         Sign In
-      </a>
+      </Link>
     </Typography>
   </form>
 </Card></div>

@@ -7,12 +7,14 @@ import Blogs from '../Component/Pages/Blogs';
 import MyToys from '../Component/Pages/MyToys';
 import Login from '../Component/SignLogin/Login';
 import Signup from '../Component/SignLogin/Signup';
+import ErrorPage from '../Errorpage/ErrorPage';
 import Main from '../Layout/Main';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main/> ,
+    errorElement: <ErrorPage />,
     children:[
       {
         path: "/",

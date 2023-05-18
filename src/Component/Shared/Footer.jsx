@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
  
 export default function Footer() {
   return (
-    <footer className="relative w-full">
+    <footer className="relative w-full ">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
         <Link to='/' className=" flex justify-center items-center">
@@ -28,7 +28,7 @@ export default function Footer() {
           <Typography
           
             
-            className="mr-4 cursor-pointer p-1.5  font-semibold"
+            className="mr-4 text-white cursor-pointer p-1.5  font-semibold"
           > 
            SuperHero Toys
           </Typography>
@@ -49,7 +49,7 @@ export default function Footer() {
                       as="a"
                       href="#"
                       color="gray"
-                      className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                      className="py-1.5 font-normal transition-colors text-white hover:text-blue-200"
                     >
                       {link}
                     </Typography>
@@ -62,12 +62,12 @@ export default function Footer() {
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal flex text-blue-gray-900 md:mb-0"
+            className="mb-4 text-center font-normal flextext-white md:mb-0"
           >
             &copy; {currentYear} <p className="px-2">Bishwajit</p>.All
             Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+          <div className="flex gap-4text-white sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path

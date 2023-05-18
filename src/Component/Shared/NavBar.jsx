@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   MobileNav,
   Typography,
   Button,
   IconButton,
+  Avatar,
  
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/Authprovider";
  
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
- 
+  const {user,logOut} = useContext(AuthContext);
+
+  const handleLogout = ()=>{
+    logOut()
+        .then()
+        .catch(error=>
+          console.log(error)
+        )
+  }
   React.useEffect(() => {
     window.addEventListener(
       "resize",
@@ -77,16 +87,29 @@ export default function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to='login' className="flex items-center">
-          Login
-        </Link>
+       
       </Typography>
+     
+           <div className='tooltip tooltip-bottom tooltip-warning ' data-tip={user && user.displayName }>
+          { user &&  <Avatar
+            variant="circular"
+            size="sm"
+            alt="candice wu"
+            className="border border-blue-500 p-0.5"
+            src={user.photoUrl}
+            
+          /> }
+          </div>
+
+
+         
+          
     </ul>
   );
  
   return (
     <>
-      <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+      <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 ">
         <div className="flex items-center justify-between text-blue-gray-900"><Link to='/' className="flex justify-center items-center">
         <img src={'https://i.ibb.co/swxphkf/heroIcon.png'}  alt="" className="w-20 rounded-full"/>
           <Typography
@@ -99,13 +122,9 @@ export default function NavBar() {
         </Link>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
-            <Button
-              variant="gradient"
-              size="sm"
-              className="hidden lg:inline-block"
-            >
-              <span>Buy Now</span>
-            </Button>
+            <div>  {  user ? <Button  onClick={handleLogout} className='mx-3 btn btn-primary '>LogOut</Button> : 
+          <Link to='/login'><Button className='btn btn-primary'>LogIn</Button>
+          </Link>}</div>
             <IconButton
               variant="text"
               className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -147,9 +166,9 @@ export default function NavBar() {
         </div>
         <MobileNav open={openNav}>
           {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
-            <span>Buy Now</span>
-          </Button>
+          <div>  {  user ? <Button  onClick={handleLogout} className='mx-3 btn btn-primary '>LogOut</Button> : 
+          <Link to='/login'><Button className='btn btn-primary'>LogIn</Button>
+          </Link>}</div>
         </MobileNav>
       </Navbar>
       

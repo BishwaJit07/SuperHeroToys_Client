@@ -1,10 +1,10 @@
-import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { Carousel, Typography,  } from "@material-tailwind/react";
 
 const Banner = () => {
   
     return (
-        <div>
-             <Carousel className="rounded-xl">
+        <div className="m-2">
+             <Carousel className="rounded-xl ">
       <div className="relative h-full w-full">
         <img
           src="https://i.ibb.co/W2vV0Xb/Web-banner-all-mcfarlane-01-11zon-1-1600x.jpg"

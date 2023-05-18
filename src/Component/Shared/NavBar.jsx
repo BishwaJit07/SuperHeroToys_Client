@@ -7,6 +7,7 @@ import {
   IconButton,
  
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
  
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -26,9 +27,9 @@ export default function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Pages
-        </a>
+        <Link to="/" className="flex items-center">
+          Home
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -36,9 +37,9 @@ export default function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Account
-        </a>
+        <Link to="/addtoy" className="flex items-center">
+          Add A Toy
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -46,9 +47,9 @@ export default function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
+        <Link to="/mytoys" className="flex items-center">
+         My Toys
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -56,9 +57,29 @@ export default function NavBar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Docs
-        </a>
+        <Link to="/alltoys" className="flex items-center">
+          All toys
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link to="/blogs" className="flex items-center">
+          Blogs
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link to='login' className="flex items-center">
+          Login
+        </Link>
       </Typography>
     </ul>
   );
@@ -66,16 +87,16 @@ export default function NavBar() {
   return (
     <>
       <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900"><div className="flex justify-center items-center">
+        <div className="flex items-center justify-between text-blue-gray-900"><Link to='/' className="flex justify-center items-center">
         <img src={'https://i.ibb.co/swxphkf/heroIcon.png'}  alt="" className="w-20 rounded-full"/>
           <Typography
-            as="a"
-            href="#"
+          
+            
             className="mr-4 cursor-pointer p-1.5  font-semibold"
           > 
            SuperHero Toys
           </Typography>
-        </div>
+        </Link>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <Button

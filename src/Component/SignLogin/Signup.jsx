@@ -5,10 +5,14 @@ import {
     Button,
     Typography,
   } from "@material-tailwind/react";
+import { useContext } from "react";
   import { SiGoogle } from "react-icons/si";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/Authprovider";
   
 const Signup = () => {
+  const {createUser} = useContext(AuthContext);
+
     const handleSignup = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,6 +20,18 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.pass.value;
         console.log(name, email, password);
+
+        createUser(email,password)
+    .then((result) => {
+     
+      const user = result.user;
+      console.log(user);
+      
+    })
+    .catch((error) => {
+      
+      console.log(error);
+    });
       };
  
       return (

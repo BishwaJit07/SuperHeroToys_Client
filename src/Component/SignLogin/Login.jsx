@@ -6,9 +6,17 @@ import {
     Button,
     Typography,
   } from "@material-tailwind/react";
+import { useContext } from "react";
   import {SiGoogle } from "react-icons/si";
+import { useLocation, useNavigate } from "react-router-dom";
+  import { AuthContext } from '../../Provider/Authprovider';
 
 const Login = () => {
+  const {signIn}= useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname  || '/';
+
+  const navigate = useNavigate();
     const handleLogIn = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,7 +24,19 @@ const Login = () => {
         const email = form.email.value;
         const password = form.pass.value;
         console.log( email, password);
-      };
+
+       
+    signIn(email ,password)
+    .then(result=>{
+      const user = result.user;
+      console.log(user);
+      navigate(from,{ replace: true })
+
+        
+      })
+      .catch(error => console.log(error))
+
+  }
     return (
         <div className="flex justify-center items-center">
         <div>

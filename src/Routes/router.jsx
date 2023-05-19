@@ -1,9 +1,11 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../Component/Home/Home/Home';
+import ToysCard from '../Component/Home/HomeCompo/ToysCard';
 import AddToys from '../Component/Pages/AddToys';
 import AllToys from '../Component/Pages/AllToys';
 import Blogs from '../Component/Pages/Blogs';
+import CardDetails from '../Component/Pages/CardDetails';
 import MyToys from '../Component/Pages/MyToys';
 import Login from '../Component/SignLogin/Login';
 import Signup from '../Component/SignLogin/Signup';
@@ -43,6 +45,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>,
+      },
+      {
+        path: "/toys/:id",
+        element: <CardDetails/>,
+        loader: ({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
       },
     ]}
     

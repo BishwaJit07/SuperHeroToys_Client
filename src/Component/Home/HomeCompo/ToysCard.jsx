@@ -1,7 +1,8 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const ToysCard = () => {
     const [toys,setToys]= useState([]);
@@ -15,65 +16,107 @@ const ToysCard = () => {
         }
     )
     return (
-        <div className='text-center'>
-       
-            <h2>ChekOut Our Toys</h2>
+        <div className='text-center p-2'>
+
+       <h2 className='text-center text-2xl font-semibold text-white p-2 rounded-xl bg-gray-600 my-2'>Chekout Our Products</h2>
+
                   <div>
                         
-                                  <Tabs>
-    <TabList>
-      <Tab>DC</Tab>
-      <Tab>Marvel</Tab>
-    </TabList>
+              <div className='flex justify-center'>
+              <Tabs>
+              <TabList className="flex justify-center py-2">
+  <Tab className="text-white font-medium text-xl px-4 py-2 bg-blue-500 rounded-md">DC</Tab>
+  <Tab className="text-white font-medium text-xl px-4 py-2 bg-blue-500 mx-4 rounded-md">Marvel</Tab>
+  <Tab className="text-white font-medium text-xl px-4 py-2 bg-blue-500 rounded-md">Under $20</Tab>
+</TabList>
 
-    <TabPanel>
-    {toys.map(toy => {
-      if (toy.sub_category === "DC") {
-        return (
-          <div key={toy._id}>
-             <div className="card w-96 bg-base-100 shadow-xl ">
-  <figure className="px-10 pt-10">
-    <img src={toy.picture_url} alt="Shoes" className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">{toy.name}</h2>
-    <p>{toy.sub_category}</p>
-    <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
+
+<TabPanel>
+  <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+    {toys
+      .filter(toy => toy.sub_category === "DC")
+      .slice(0, 4)
+      .map(toy => (
+        <div key={toy._id} className="grid-item">
+          <div className="card w-96 h-5/6 bg-blue-gray-800 p-2 text-white">
+            <figure className="px-10 pt-10">
+              <img src={toy.picture_url} alt="Shoes" className="p-4 rounded-2xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{toy.name}</h2>
+              <p>{toy.sub_category}</p>
+              <div className='flex py-2'>
+                <p className='mx-2 badge badge-warning badge-outline gap-2'>Rating {toy.rating}</p>
+                <p className='badge badge-accent mx-2 text-white'>$ {toy.price} </p>
+              </div>
+              <div className="card-actions">
+                <Link to={`/toys/${toy._id}`} className="btn btn-primary">View Details</Link>
+              </div>
+            </div>
           </div>
-        );
-      }
-      return null;
-    })}
-  </TabPanel>
-    <TabPanel>
-    {toys.map(toy => {
-      if (toy.sub_category === "Marvel") {
-        return (
-          <div key={toy._id}>
-           <div className="card w-96 bg-base-100 shadow-xl ">
-  <figure className="px-10 pt-10">
-    <img src={toy.picture_url} alt="Shoes" className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">{toy.name}</h2>
-    <p>{toy.sub_category}</p>
-    <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
+        </div>
+      ))}
   </div>
-</div>
+</TabPanel>
+<TabPanel>
+  <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+    {toys
+      .filter(toy => toy.sub_category === "Marvel")
+      .slice(0, 4)
+      .map(toy => (
+        <div key={toy._id} className="grid-item">
+          <div className="card w-96 h-5/6 bg-blue-gray-800 text-white">
+            <figure className="px-10 pt-10">
+              <img src={toy.picture_url} alt="Shoes" className="p-4 rounded-xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{toy.name}</h2>
+              <p>{toy.sub_category}</p>
+              <div className='flex py-2'>
+                <p className='mx-2 badge badge-warning badge-outline gap-2'>Rating {toy.rating}</p>
+                <p className='badge badge-accent mx-2 text-white'>$ {toy.price} </p>
+              </div>
+              <div className="card-actions">
+              <Link to={`/toys/${toy._id}`} className="btn btn-primary">View Details</Link>
+              </div>
+            </div>
           </div>
-        );
-      }
-      return null;
-    })}
-  </TabPanel>
+        </div>
+      ))}
+  </div>
+</TabPanel>
+
+<TabPanel>
+  <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+    {toys
+      .filter(toy => toy.price < 20)
+      .slice(0, 4)
+      .map(toy => (
+        <div key={toy._id} className="grid-item">
+          <div className="card w-96 bg-blue-gray-800 h-5/6 text-white">
+            <figure className="px-10 pt-10">
+              <img src={toy.picture_url} alt="Shoes" className="p-4 rounded-2xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{toy.name}</h2>
+              <p>{toy.sub_category}</p>
+              <div className='flex py-2'>
+                <p className='mx-2 badge badge-warning badge-outline gap-2'>Rating {toy.rating}</p>
+                <p className='badge badge-accent mx-2 text-white'>$ {toy.price} </p>
+              </div>
+              <div className="card-actions">
+              <Link to={`/toys/${toy._id}`} className="btn btn-primary">View Details</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+  </div>
+</TabPanel>
+
     
   </Tabs>
+              </div>
                             
                   </div>
 

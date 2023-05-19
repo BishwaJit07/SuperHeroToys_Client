@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   Button,
   IconButton,
@@ -157,12 +157,12 @@ export default function NavBar() {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>
+        <Collapse open={openNav}>
           {navList}
           <div>  {  user ? <Button  onClick={handleLogout} className='mx-3 btn btn-primary '>LogOut</Button> : 
           <Link to='/login'><Button className='btn btn-primary'>LogIn</Button>
           </Link>}</div>
-        </MobileNav>
+        </Collapse>
       </Navbar>
       
     </>

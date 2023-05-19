@@ -11,6 +11,7 @@ import Login from '../Component/SignLogin/Login';
 import Signup from '../Component/SignLogin/Signup';
 import ErrorPage from '../Errorpage/ErrorPage';
 import Main from '../Layout/Main';
+import PrivateRoutes from './PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -32,11 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addtoy",
-        element: <AddToys/>,
+        element: <PrivateRoutes><AddToys/></PrivateRoutes> ,
       },
       {
         path: "/mytoys",
-        element: <MyToys/>,
+        element: <PrivateRoutes><MyToys/></PrivateRoutes> ,
       },
       {
         path: "/signup",
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/toys/:id",
-        element: <CardDetails/>,
+        element: <PrivateRoutes><CardDetails/></PrivateRoutes>,
         loader: ({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
       },
     ]}

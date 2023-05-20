@@ -3,20 +3,25 @@ import 'react-tabs/style/react-tabs.css';
 import  { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const ToysCard = () => {
     const [toys,setToys]= useState([]);
     useEffect(
         ()=>{
-            fetch('http://localhost:5000/toys')
+            fetch('https://super-hero-toy-server.vercel.app/toys')
             .then(res=> res.json())
             .then(data=>{
                 setToys(data);
             })
         }
     )
+    useEffect(() => {
+      AOS.init();
+    }, []);
     return (
-        <div className='text-center p-2'>
+        <div className='text-center p-2' >
 
        <h2 className='text-center text-2xl font-semibold text-white p-2 rounded-xl bg-gray-600 my-2'>Chekout Our Products</h2>
 
@@ -32,10 +37,10 @@ const ToysCard = () => {
 
 
 <TabPanel>
-  <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+  <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4" data-aos="fade-down">
     {toys
       .filter(toy => toy.sub_category === "DC")
-      .slice(0, 4)
+      
       .map(toy => (
         <div key={toy._id} className="grid-item">
           <div className="card w-96 h-5/6 bg-blue-gray-800 p-2 text-white">
@@ -62,7 +67,7 @@ const ToysCard = () => {
   <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
     {toys
       .filter(toy => toy.sub_category === "Marvel")
-      .slice(0, 4)
+     
       .map(toy => (
         <div key={toy._id} className="grid-item">
           <div className="card w-96 h-5/6 bg-blue-gray-800 text-white">
@@ -90,7 +95,7 @@ const ToysCard = () => {
   <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
     {toys
       .filter(toy => toy.price < 20)
-      .slice(0, 4)
+     
       .map(toy => (
         <div key={toy._id} className="grid-item">
           <div className="card w-96 bg-blue-gray-800 h-5/6 text-white">
@@ -119,7 +124,6 @@ const ToysCard = () => {
               </div>
                             
                   </div>
-
         </div>
     );
 };

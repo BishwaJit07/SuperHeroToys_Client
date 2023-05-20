@@ -81,14 +81,7 @@ export default function NavBar() {
           Blogs
         </Link>
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-       
-      </Typography>
+     
      
            <div className='tooltip tooltip-bottom tooltip-warning ' data-tip={user && user.displayName }>
           { user &&    <Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" />}

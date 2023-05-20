@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.0.1",
+    "aos": "^2.3.4",
     "daisyui": "^2.51.6",
     "dotenv": "^16.0.3",
     "firebase": "^9.22.0",
@@ -19,6 +20,7 @@
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.5.2",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.2",
     "react-select": "^5.7.3",

@@ -8,20 +8,21 @@ import {
   Avatar,
   Input,
   IconButton,
-  Button,
+
   
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
-import { Link } from "react-router-dom";
+
 import UpdateToy from "./UpdateToy";
  
 const TABLE_HEAD = ["","ToyName", "Price", "Sub-category", "Available Quantity", "Seller", "Details"];
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/mytoys/${user?.email}`)
@@ -33,7 +34,36 @@ const MyToys = () => {
   
 
 
-
+      const [toyData, setToyData] = useState({
+       
+        sellerName: user.displayName,
+        sellerEmail: user?.email,
+          price: '',
+          
+          available_quantity: '',
+          description: '',
+      });
+console.log(toyData);
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setToyData((prevState) => ({
+          ...prevState,
+          [name]: value,
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        // Perform submit logic here
+        console.log(toyData);
+        // Reset form after submission if needed
+        setToyData({
+          
+          price: '',
+         
+          description: '',
+          available_quantity: '',
+        });}
 
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = (e) => {
@@ -58,6 +88,9 @@ const handleDeleteBtn = id=>{
     })
   }
 }
+
+
+
     return (
         <div>
            <Card className=" my-4">
@@ -110,7 +143,7 @@ const handleDeleteBtn = id=>{
             <td className="text-xl ">{toy.sub_category}</td>
             <td className="text-xl">{toy.available_quantity}</td>
             <td className="text-xl">{user && user.displayName|| toy.sellerName }</td>
-            <td className="text-xl"><UpdateToy/></td>
+            <td className="text-xl"><UpdateToy handleInputChange={handleInputChange} handleSubmit={handleSubmit} toyData ={toyData} setToyData={setToyData}  toy={toy}/></td>
             
              </tbody>
       ))}

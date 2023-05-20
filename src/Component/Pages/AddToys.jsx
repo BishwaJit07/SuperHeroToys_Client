@@ -30,13 +30,7 @@ const AddToys = () => {
     console.log(toyData);
     // Reset form after submission if needed
     setToyData({
-      picture_url: '',
-      name: '',
-     
-     
-      sub_category: '',
       price: '',
-      rating: '',
       available_quantity: '',
       description: '',
     });

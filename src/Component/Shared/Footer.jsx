@@ -33,13 +33,13 @@ export default function Footer() {
            SuperHero Toys
           </Typography>
         </Link>
-          <div className="grid grid-cols-3 justify-between gap-4">
+          <div className="grid grid-cols-3 justify-between gap-4 pt-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
                   variant="small"
-                  color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
+                  color="white"
+                  className="m-3 font-medium opacity-40"
                 >
                   {title}
                 </Typography>

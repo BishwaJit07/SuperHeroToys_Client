@@ -25,8 +25,8 @@ const CardDetails = () => {
                 <p>{toy.description}</p>
               </div>
               <div className='text-white'>
-              {user.displayName && <p>Seller: {user.displayName}</p>}
-              <p>Seller Email: {user.email}</p>
+              {user?.displayName && <p>Seller: {user?.displayName}</p>}
+              <p>Seller Email: {user?.email}</p>
               </div>
             </div>
           </div>

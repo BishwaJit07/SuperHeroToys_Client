@@ -6,20 +6,22 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-import { FaEdit } from "react-icons/fa";
 
-
-export default function UpdateToy() {
+ 
+export default function UpdateToy(props) {
   const [size, setSize] = useState(null);
- 
+   
+  const {toy,toyData,handleInputChange, handleSubmit} = props;
+
   const handleOpen = (value) => setSize(value);
- 
+
+
   return (
     <Fragment>
       <div className="mb-3 flex gap-3">
         
         <Button onClick={() => handleOpen("sm")} variant="gradient">
-         <FaEdit/> Edit
+          Edit
         </Button>
        
       </div>
@@ -34,26 +36,70 @@ export default function UpdateToy() {
       >
         <DialogHeader>Its a simple dialog.</DialogHeader>
         <DialogBody divider>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ad
-          reprehenderit omnis perspiciatis aut odit! Unde architecto
-          perspiciatis, dolorum dolorem iure quia saepe autem accusamus eum
-          praesentium magni corrupti explicabo!
+        <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+  <div className="mb-4">
+    <label htmlFor="price" className="block font-medium text-blue-800">
+      Price
+    </label>
+    <input
+      required
+      type="number"
+      id="price"
+      name="price"
+      value={toyData.price}
+      onChange={handleInputChange}
+      className="mt-1 p-2 border border-gray-300 rounded-md w-full text-white"
+      placeholder="Enter price"
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="available_quantity" className="block font-medium text-blue-800">
+      Available Quantity
+    </label>
+    <input
+      required
+      type="number"
+      id="available_quantity"
+      name="available_quantity"
+      value={toyData.available_quantity}
+      onChange={handleInputChange}
+      className="mt-1 p-2 border border-gray-300 rounded-md w-full text-white"
+      placeholder="Enter available quantity"
+    />
+  </div>
+
+  <div className="mb-4">
+    <label htmlFor="description" className="block font-medium text-blue-800">
+      Detail Description
+    </label>
+    <textarea
+      id="description"
+      name="description"
+      value={toyData.description}
+      onChange={handleInputChange}
+      className="mt-1 p-2 border border-gray-300 rounded-md w-full h-32 resize-none text-white"
+      placeholder="Enter detail description"
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+  >
+    Submit
+  </button>
+</form>
         </DialogBody>
         <DialogFooter>
+         
           <Button
-            variant="text"
+          type="submit"
+            variant="gradient"
             color="red"
             onClick={() => handleOpen(null)}
-            className="mr-1"
           >
-            <span>Cancel</span>
-          </Button>
-          <Button
-            variant="gradient"
-            color="green"
-            onClick={() => handleOpen(null)}
-          >
-            <span>Confirm</span>
+            <span>close</span>
           </Button>
         </DialogFooter>
       </Dialog>

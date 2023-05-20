@@ -24,7 +24,7 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
         <Link to='/' className=" flex justify-center items-center">
-        <img src={'https://i.ibb.co/swxphkf/heroIcon.png'}  alt="" className="w-20 rounded-full"/>
+        <img src={'https://i.ibb.co/7rmDhJg/20230520-181230-1-200x200-200.png'}  alt="" className="w-20 rounded-full"/>
           <Typography
           
             

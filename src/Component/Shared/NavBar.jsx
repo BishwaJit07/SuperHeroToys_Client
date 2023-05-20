@@ -97,7 +97,7 @@ export default function NavBar() {
     <>
       <Navbar className="sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 ">
         <div className="flex items-center justify-between text-blue-gray-900"><Link to='/' className="flex justify-center items-center">
-        <img src={'https://i.ibb.co/swxphkf/heroIcon.png'}  alt="" className="w-20 rounded-full"/>
+        <img src={'https://i.ibb.co/7rmDhJg/20230520-181230-1-200x200-200.png'}  alt="" className="w-20 rounded-full"/>
           <Typography
           
             

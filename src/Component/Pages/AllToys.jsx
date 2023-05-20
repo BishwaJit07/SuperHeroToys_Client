@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Link } from "react-router-dom";
  
-const TABLE_HEAD = ["","ToyName", "Price", "Sub-category", "Available Quantity", "Seller", "Details"];
+const TABLE_HEAD = ["ToyName", "Price", "Sub-category", "Available Quantity", "Seller", ""];
 
 
  
@@ -38,27 +38,11 @@ export default function AllToys() {
     setSearchTerm(searchTerm);
   };
 
-const handleDeleteBtn = id=>{
-  const procced = confirm('Sure ? delete this toy?');
-  if(procced){
-    fetch(`https://super-hero-toy-server.vercel.app/toys/${id}`,{
-      method: 'DELETE'
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-            alert('deleted successful');
-            const remaining = toys.filter(toy => toy._id !== id);
-            setToys(remaining);
-        }
-    })
-  }
-}
+
  
 
   return (
-    <Card className="h-full w-full my-4">
+    <Card className=" my-4">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div className="text-center">
@@ -102,7 +86,7 @@ const handleDeleteBtn = id=>{
   // .slice(0, 20)
   .map((toy) => (
         <tbody key={toy._id}  >
-          <td className="p-2 " onClick={()=>handleDeleteBtn(toy._id)}> <IconButton color="red" ><MdDeleteForever className="text-3xl"/>  </IconButton></td>
+          
             <td className="p-4 text-xl font-semibold flex items-center"> <Avatar src={toy.picture_url} alt="avatar" size="lg" variant="rounded" withBorder={true} color="green" className="p-0.5" /><p className="pl-2" >{toy.name}</p></td>
             <td className="text-xl">${toy.price}</td>
             <td className="text-xl ">{toy.sub_category}</td>

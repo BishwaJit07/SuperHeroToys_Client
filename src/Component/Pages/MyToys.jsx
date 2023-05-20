@@ -8,6 +8,7 @@ import {
   Avatar,
   Input,
   IconButton,
+  Button,
   
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
@@ -15,19 +16,24 @@ import { MdDeleteForever } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Link } from "react-router-dom";
+import UpdateToy from "./UpdateToy";
  
 const TABLE_HEAD = ["","ToyName", "Price", "Sub-category", "Available Quantity", "Seller", "Details"];
 const MyToys = () => {
+    const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
-  useEffect(() => {
-    fetch("https://super-hero-toy-server.vercel.app/toys")
-      .then((res) => res.json())
-      .then((data) => {
-        setToys(data);
-      });
-  }, []);
 
-  const { user } = useContext(AuthContext);
+    useEffect(() => {
+        fetch(`http://localhost:5000/mytoys/${user?.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setToys(data);
+          });
+      }, [user]);
+  
+
+
+
 
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = (e) => {
@@ -103,8 +109,8 @@ const handleDeleteBtn = id=>{
             <td className="text-xl">${toy.price}</td>
             <td className="text-xl ">{toy.sub_category}</td>
             <td className="text-xl">{toy.available_quantity}</td>
-            <td className="text-xl">{user && user.displayName }</td>
-            <td className="text-xl"><Link to={`/toys/${toy._id}`} className="btn btn-primary">View Details</Link></td>
+            <td className="text-xl">{user && user.displayName|| toy.sellerName }</td>
+            <td className="text-xl"><UpdateToy/></td>
             
              </tbody>
       ))}
@@ -114,6 +120,7 @@ const handleDeleteBtn = id=>{
   
 
     </Card>
+   
         </div>
     );
 };

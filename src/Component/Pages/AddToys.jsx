@@ -32,8 +32,8 @@ const AddToys = () => {
     setToyData({
       picture_url: '',
       name: '',
-      sellerName: '',
-      sellerEmail: '',
+     
+     
       sub_category: '',
       price: '',
       rating: '',
@@ -156,12 +156,15 @@ height: '300px',  backgroundPosition: 'center',}}>
       </div>
 
       <div className="mb-4">
-        <label htmlFor="price" className="block font-medium text-gray-200">
+        <label htmlFor="price" 
+       
+        className="block font-medium text-gray-200">
           Price
         </label>
         <input required
-          type="text"
+          type="number"
           id="price"
+          
           name="price"
           value={toyData.price}
           onChange={handleInputChange}
@@ -175,7 +178,7 @@ height: '300px',  backgroundPosition: 'center',}}>
           Rating
         </label>
         <input required
-          type="text"
+          type="number"
           id="rating"
           name="rating"
           value={toyData.rating}
@@ -190,7 +193,7 @@ height: '300px',  backgroundPosition: 'center',}}>
           Available Quantity
         </label>
         <input required
-          type="text"
+          type="number"
           id="available_quantity"
           name="available_quantity"
           value={toyData.available_quantity}

@@ -84,7 +84,7 @@ export default function NavBar() {
      
      
            <div className='tooltip tooltip-bottom tooltip-warning ' data-tip={user && user.displayName }>
-          { user &&    <Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" />}
+          { user?.photoURL &&    <Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" />}
           </div>
 
 

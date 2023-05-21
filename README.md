@@ -1,6 +1,6 @@
 <h2>Superhero Toys</h2>
 
-A website for purchasing superhero toys.
+A website for Sell-Buy superhero toys.
 
 <h5>Features</h5>
 <ul> 

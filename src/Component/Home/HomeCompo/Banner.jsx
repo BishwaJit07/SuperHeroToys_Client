@@ -9,7 +9,7 @@ const Banner = () => {
         <img
           src="https://i.ibb.co/W2vV0Xb/Web-banner-all-mcfarlane-01-11zon-1-1600x.jpg"
           alt="image 1"
-          className="h-96 w-full object-cover"
+          className="h-96 w-full object-cover "
         />
         <div className="absolute inset-0 grid h-full w-full   place-items-center bg-black/50">
           <div className="w-3/4 text-center  md:w-2/4">

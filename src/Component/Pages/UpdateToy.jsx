@@ -11,6 +11,7 @@ import useTitle from "../hooks/useTitle";
 
  
 export default function UpdateToy(props) {
+
   const [size, setSize] = useState(null);
    
   const {toy,toys,setToys,user} = props;

@@ -6,7 +6,7 @@ import useTitle from '../hooks/useTitle';
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
-    useTitle('SuperHeroToys-login')
+    useTitle('SuperHeroToys-AddToys');
   const [toyData, setToyData] = useState({
     picture_url: '',
     name: '',

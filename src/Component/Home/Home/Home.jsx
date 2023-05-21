@@ -1,4 +1,5 @@
 
+import useTitle from '../../hooks/useTitle';
 import Animation from '../HomeCompo/Animation';
 import Banner from '../HomeCompo/Banner';
 import ImgGallery from '../HomeCompo/ImgGallery';
@@ -7,6 +8,7 @@ import Popular from '../HomeCompo/popular';
 import ToysCard from '../HomeCompo/ToysCard';
 
 const Home = () => {
+    useTitle('SuperHeroToys-Home');
     return (
         <div>
           <Banner/>

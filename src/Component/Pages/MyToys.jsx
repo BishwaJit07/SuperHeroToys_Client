@@ -36,6 +36,8 @@ const MyToys = () => {
 
 
 
+
+
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
@@ -136,7 +138,7 @@ const MyToys = () => {
           </thead>
           {toys
  .filter((toy) => toy && toy.name && toy.name.toLowerCase().includes(searchTerm.toLowerCase()))
-  // .slice(0, 20)
+  
   .map((toy) => (
         <tbody key={toy._id}  >
           <td className="p-2 " onClick={()=>handleDeleteBtn(toy._id)}> <IconButton color="red" ><MdDeleteForever className="text-3xl"/>  </IconButton></td>

@@ -10,9 +10,11 @@ import { useContext } from "react";
   import {SiGoogle } from "react-icons/si";
 import { Link, useLocation, useNavigate } from "react-router-dom";
   import { AuthContext } from '../../Provider/Authprovider';
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
   const {signIn,signInGoogle}= useContext(AuthContext);
+  useTitle('SuperHeroToys-Login');
   const location = useLocation();
   const from = location.state?.from?.pathname  || '/';
 
@@ -46,7 +48,7 @@ const Login = () => {
     })
     .catch(error=>{
         console.log(error.message);
-        setError('An error occured.Try Again')
+        
     })
   }
     return (
@@ -67,26 +69,7 @@ const Login = () => {
       <Input size="lg" label="Email" name="email" className="text-white"/>
       <Input type="password" size="lg" label="Password" name="pass" className="text-white"/>
     </div>
-    <Checkbox
-      label={
-        (
-          <Typography
-            variant="small"
-            color="gray"
-            className="flex items-center font-normal text-white"
-          >
-            I agree the
-            <a
-              href="#"
-              className="font-medium transition-colors hover:text-blue-500"
-            >
-              &nbsp;Terms and Conditions
-            </a>
-          </Typography>
-        )
-      }
-      containerProps={{ className: "-ml-2.5" }}
-    />
+  
     <Button type="submit" className="mt-6" fullWidth>
       Log In
     </Button>

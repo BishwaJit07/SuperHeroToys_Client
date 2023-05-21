@@ -9,13 +9,14 @@ import { useContext } from "react";
   import { SiGoogle } from "react-icons/si";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authprovider";
+import useTitle from "../hooks/useTitle";
   
 const Signup = () => {
   const {createUser,signInGoogle} = useContext(AuthContext);
   const location = useLocation();
   const from = location.state?.from?.pathname  || '/';
   const navigate = useNavigate();
-
+  useTitle('SuperHeroToys-SignUp');
     const handleSignup = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -72,24 +73,7 @@ const Signup = () => {
               <Input type="password" size="lg" label="Password" name="pass" className="text-white"/>
 
                 </div>
-                <Checkbox
-                  label={
-                    <Typography
-                      variant="small"
-                      color="gray"
-                      className="flex items-center font-normal text-white"
-                    >
-                      I agree to the
-                      <a
-                        href="#"
-                        className="font-medium transition-colors hover:text-blue-500"
-                      >
-                        &nbsp;Terms and Conditions
-                      </a>
-                    </Typography>
-                  }
-                  containerProps={{ className: "-ml-2.5" }}
-                />
+                
                 <Button type="submit"  className="mt-6" fullWidth>
                   Register
                 </Button>

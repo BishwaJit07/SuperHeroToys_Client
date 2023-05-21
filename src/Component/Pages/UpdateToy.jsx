@@ -39,7 +39,7 @@ export default function UpdateToy(props) {
     e.preventDefault();
     console.log(toyData);
   
-    fetch(`http://localhost:5000/mytoys/${toyData._id}`, {
+    fetch(`https://super-hero-toy-server.vercel.app/mytoys/${toyData._id}`, {
       method: 'PATCH', // or 'PUT' depending on your server API
       headers: {
         'Content-Type': 'application/json',

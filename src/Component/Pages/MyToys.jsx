@@ -33,36 +33,7 @@ const MyToys = () => {
   
 
 
-//       const [toyData, setToyData] = useState({
-       
-//         sellerName: user.displayName,
-//         sellerEmail: user?.email,
-//           price: '',
-          
-//           available_quantity: '',
-//           description: '',
-//       });
-// console.log(toyData);
-//       const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setToyData((prevState) => ({
-//           ...prevState,
-//           [name]: value,
-//         }));
-//       };
-    
-//       const handleSubmit = (e) => {
-//         e.preventDefault();
-//         // Perform submit logic here
-//         console.log(toyData);
-//         // Reset form after submission if needed
-//         setToyData({
-          
-//           price: '',
-         
-//           description: '',
-//           available_quantity: '',
-//         });}
+
 
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -122,8 +93,7 @@ const MyToys = () => {
     });
   };
 
-  
-  
+ 
     return (
         <div>
            <Card className=" my-4">
@@ -136,6 +106,7 @@ const MyToys = () => {
             <Typography color="gray" className="mt-1 font-normal">
              Edit or Remove your toys
             </Typography>
+          
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
             <div className="w-full md:w-72">

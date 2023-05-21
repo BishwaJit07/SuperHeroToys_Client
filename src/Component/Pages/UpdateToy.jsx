@@ -6,12 +6,13 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import swal from "sweetalert";
 
  
 export default function UpdateToy(props) {
   const [size, setSize] = useState(null);
    
-  const {toy,setToys,user} = props;
+  const {toy,toys,setToys,user} = props;
 
   
   const handleOpen = (value) => setSize(value);
@@ -41,9 +42,9 @@ export default function UpdateToy(props) {
     fetch(`http://localhost:5000/mytoys/${toyData._id}`, {
       method: 'PATCH', // or 'PUT' depending on your server API
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(toyData)
+      body: JSON.stringify(toyData),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -51,10 +52,11 @@ export default function UpdateToy(props) {
   
         if (data.modifiedCount > 0) {
           // Handle successful update
-          const remainingToys = toy.filter((t) => t._id !== toyData._id);
+          const remainingToys = toys.filter((t) => t._id !== toyData._id);
           const updatedToy = { ...toyData };
           setToyData(updatedToy);
           setToys([...remainingToys, updatedToy]);
+          swal("Toy Updated!", "Good Job..", "success")
         }
       })
       .catch((error) => {
@@ -62,7 +64,6 @@ export default function UpdateToy(props) {
         // Handle any errors that occur during the fetch request
       });
   };
-  
 
   // const updateToy = (toyData)=>{
   

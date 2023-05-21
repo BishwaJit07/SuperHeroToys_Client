@@ -1,15 +1,11 @@
-
-import { useEffect } from 'react';
 import Marquee from 'react-fast-marquee';
-import AOS from "aos";
+
 
 
 const Animation = () => {
-    useEffect(() => {
-        AOS.init();
-      }, []);
+    
     return (
-       <div data-aos="fade-right">
+       <div >
          <Marquee  className=" rounded-xl p-2">
        <img src="https://i.ibb.co/b6L0gw4/YtyP.gif" alt="96b083f5f824d2b8b342047b66832276" border="0" className=" h-80 w-80"/>
 <img src="https://i.ibb.co/r2YRsdG/iron-standattax.gif" alt="iron-standattax" border="0" className=" h-80 w-80"/>

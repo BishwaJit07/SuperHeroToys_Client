@@ -1,14 +1,11 @@
 import { Typography } from '@material-tailwind/react';
-import "aos/dist/aos.css";
-import AOS from "aos";
-import { useEffect } from 'react';
+
+
 
 const Popular = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  
     return (
-       <div data-aos="fade-up">
+       <div >
         <h2 className='text-center text-2xl font-semibold text-white p-2 rounded-xl bg-gray-600 my-2'>Hot Picks</h2>
          <div className='flex flex-col md:flex-row justify-between'>
               <div className="relative h-full w-full p-2 ">

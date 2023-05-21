@@ -83,7 +83,7 @@ export default function AllToys() {
           </thead>
           {toys
    .filter((toy) => toy && toy.name && toy.name.toLowerCase().includes(searchTerm.toLowerCase()))
-// .slice(0, 20)
+.slice(0,20)
 .map((toy) => (
         <tbody key={toy._id}  >
           

@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import { AuthContext } from '../../Provider/Authprovider';
+import useTitle from '../hooks/useTitle';
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
+    useTitle('SuperHeroToys-login')
   const [toyData, setToyData] = useState({
     picture_url: '',
     name: '',

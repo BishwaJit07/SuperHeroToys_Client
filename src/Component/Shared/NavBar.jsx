@@ -15,6 +15,8 @@ export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const {user,logOut} = useContext(AuthContext);
 
+ 
+
   const handleLogout = ()=>{
     logOut()
         .then()

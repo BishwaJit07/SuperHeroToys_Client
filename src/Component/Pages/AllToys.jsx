@@ -15,13 +15,14 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Link } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
  
 const TABLE_HEAD = ["ToyName", "Price", "Sub-category", "Available Quantity", "Seller", ""];
 
 
  
 export default function AllToys() {
-
+  useTitle('SuperHeroToys-AllToys')
   const [toys, setToys] = useState([]);
   useEffect(() => {
     fetch("https://super-hero-toy-server.vercel.app/toys")

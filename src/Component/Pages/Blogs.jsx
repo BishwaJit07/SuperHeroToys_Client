@@ -1,5 +1,6 @@
 import { Accordion, AccordionBody, AccordionHeader } from '@material-tailwind/react';
 import  { Fragment, useState } from 'react';
+import useTitle from '../hooks/useTitle';
 
 function Icon({ id, open }) {
     return (
@@ -20,7 +21,7 @@ function Icon({ id, open }) {
   
 const Blogs = () => {
     const [open, setOpen] = useState(0);
- 
+    useTitle('SuperHeroToys-Blogs')
     const handleOpen = (value) => {
       setOpen(open === value ? 0 : value);
     };

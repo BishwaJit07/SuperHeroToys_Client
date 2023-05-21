@@ -1,7 +1,7 @@
 const ImgGallery = () => {
     
     return (
-        <div data-aos="fade-left"><h2 className='text-center text-2xl font-semibold text-white p-2 rounded-xl bg-gray-600 my-2'>Toy Gallery</h2>
+        <div ><h2 className='text-center text-2xl font-semibold text-white p-2 rounded-xl bg-gray-600 my-2'>Toy Gallery</h2>
             <div className="container mx-auto px-5 pt-4  lg:px-32 lg:pt-4">
   <div className="-m-1 flex flex-wrap md:-m-2">
     <div className="flex w-1/2 flex-wrap">

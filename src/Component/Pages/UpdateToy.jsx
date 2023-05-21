@@ -7,13 +7,14 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import swal from "sweetalert";
+import useTitle from "../hooks/useTitle";
 
  
 export default function UpdateToy(props) {
   const [size, setSize] = useState(null);
    
   const {toy,toys,setToys,user} = props;
-
+  useTitle('SuperHeroToys-UpdateToys')
   
   const handleOpen = (value) => setSize(value);
 
@@ -61,14 +62,10 @@ export default function UpdateToy(props) {
       })
       .catch((error) => {
         console.error(error);
-        // Handle any errors that occur during the fetch request
+     
       });
   };
 
-  // const updateToy = (toyData)=>{
-  
-   
-  // }
 
   return (
     <Fragment>

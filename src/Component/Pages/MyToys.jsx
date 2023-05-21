@@ -17,9 +17,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 import swal from 'sweetalert';
 import UpdateToy from "./UpdateToy";
+import useTitle from "../hooks/useTitle";
  
 const TABLE_HEAD = ["","ToyName", "Price", "Sub-category", "Available Quantity", "Seller", "Details"];
 const MyToys = () => {
+  useTitle('SuperHeroToys-MyToys')
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
 
@@ -31,9 +33,6 @@ const MyToys = () => {
           });
       }, [user]);
   
-
-
-
 
 
   const [searchTerm, setSearchTerm] = useState("");

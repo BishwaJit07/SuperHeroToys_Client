@@ -27,7 +27,7 @@ const ToysCard = () => {
 
                   <div>
                         
-              <div className='flex justify-center'>
+              <div className='flex justify-center w-'>
               <Tabs>
               <TabList className="flex justify-center py-2">
   <Tab className="text-white font-medium text-xl px-4 py-2 bg-blue-500 rounded-md">DC</Tab>

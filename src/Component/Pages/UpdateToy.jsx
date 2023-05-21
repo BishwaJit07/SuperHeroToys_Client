@@ -41,7 +41,7 @@ export default function UpdateToy(props) {
     console.log(toyData);
   
     fetch(`https://super-hero-toy-server.vercel.app/mytoys/${toyData._id}`, {
-      method: 'PATCH', // or 'PUT' depending on your server API
+      method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
       },
@@ -57,7 +57,9 @@ export default function UpdateToy(props) {
           const updatedToy = { ...toyData };
           setToyData(updatedToy);
           setToys([...remainingToys, updatedToy]);
-          swal("Toy Updated!", "Good Job..", "success")
+          swal("Toy Updated!", "Good Job..", "success").then(() => {
+            window.location.reload(); // Reload the page
+          });
         }
       })
       .catch((error) => {

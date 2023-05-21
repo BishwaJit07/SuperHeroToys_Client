@@ -7,6 +7,7 @@ import AllToys from '../Component/Pages/AllToys';
 import Blogs from '../Component/Pages/Blogs';
 import CardDetails from '../Component/Pages/CardDetails';
 import MyToys from '../Component/Pages/MyToys';
+
 import Login from '../Component/SignLogin/Login';
 import Signup from '../Component/SignLogin/Signup';
 import ErrorPage from '../Errorpage/ErrorPage';
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login/>,
       },
+     
       {
         path: "/toys/:id",
         element: <PrivateRoutes><CardDetails/></PrivateRoutes>,

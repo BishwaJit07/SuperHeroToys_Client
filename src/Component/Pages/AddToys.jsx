@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import { AuthContext } from '../../Provider/Authprovider';
 
 const AddToys = () => {
@@ -29,8 +30,12 @@ const AddToys = () => {
     // Perform submit logic here
     console.log(toyData);
     // Reset form after submission if needed
-    setToyData({
+    setToyData({ 
+      picture_url: '',
+    name: '',
+      sub_category: '',
       price: '',
+      rating: '',
       available_quantity: '',
       description: '',
     });
@@ -46,7 +51,7 @@ const AddToys = () => {
     .then(data => {
       console.log(data);
       if(data.insertedId){
-          alert('Toys added succesfully')
+        swal("Toy Added!", "Good Job..", "success")
       }
     })
 

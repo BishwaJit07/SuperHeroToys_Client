@@ -15,14 +15,13 @@ import { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
-
+import swal from 'sweetalert';
 import UpdateToy from "./UpdateToy";
  
 const TABLE_HEAD = ["","ToyName", "Price", "Sub-category", "Available Quantity", "Seller", "Details"];
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
-    
 
     useEffect(() => {
         fetch(`https://super-hero-toy-server.vercel.app/mytoys/${user?.email}`)
@@ -34,36 +33,37 @@ const MyToys = () => {
   
 
 
-      const [toyData, setToyData] = useState({
+//       const [toyData, setToyData] = useState({
        
-        sellerName: user.displayName,
-        sellerEmail: user?.email,
-          price: '',
+//         sellerName: user.displayName,
+//         sellerEmail: user?.email,
+//           price: '',
           
-          available_quantity: '',
-          description: '',
-      });
-console.log(toyData);
-      const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setToyData((prevState) => ({
-          ...prevState,
-          [name]: value,
-        }));
-      };
+//           available_quantity: '',
+//           description: '',
+//       });
+// console.log(toyData);
+//       const handleInputChange = (e) => {
+//         const { name, value } = e.target;
+//         setToyData((prevState) => ({
+//           ...prevState,
+//           [name]: value,
+//         }));
+//       };
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        // Perform submit logic here
-        console.log(toyData);
-        // Reset form after submission if needed
-        setToyData({
+//       const handleSubmit = (e) => {
+//         e.preventDefault();
+//         // Perform submit logic here
+//         console.log(toyData);
+//         // Reset form after submission if needed
+//         setToyData({
           
-          price: '',
+//           price: '',
          
-          description: '',
-          available_quantity: '',
-        });}
+//           description: '',
+//           available_quantity: '',
+//         });}
+
 
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = (e) => {
@@ -71,26 +71,59 @@ console.log(toyData);
     setSearchTerm(searchTerm);
   };
 
-const handleDeleteBtn = id=>{
-  const procced = confirm('Sure ? delete this toy?');
-  if(procced){
-    fetch(`https://super-hero-toy-server.vercel.app/toys/${id}`,{
-      method: 'DELETE'
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-            alert('deleted successful');
-            const remaining = toys.filter(toy => toy._id !== id);
-            setToys(remaining);
-        }
-    })
-  }
-}
+  const handleDeleteBtn = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Sure to delete this toy?",
+      icon: "warning",
+      buttons: {
+        cancel: {
+          text: "Cancel",
+          value: null,
+          visible: true,
+          className: "",
+          closeModal: true,
+        },
+        confirm: {
+          text: "Yes, delete it!",
+          value: true,
+          visible: true,
+          className: "",
+          closeModal: false,
+        },
+      },
+      dangerMode: true,
+    }).then((proceed) => {
+      if (proceed) {
+        fetch(`https://super-hero-toy-server.vercel.app/mytoys/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => {
+            if (!res.ok) {
+              throw new Error("Failed to delete the toy.");
+            }
+            return res.json();
+          })
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              swal("Deleted!", "Toy deleted successfully.", "success");
+              const remaining = toys.filter(toy => toy._id !== id);
+              setToys(remaining);
+            } else {
+              swal("Error", "Failed to delete the toy.", "error");
+            }
+          })
+          .catch(error => {
+            swal("Error", "Failed to delete the toy.", "error");
+            console.error(error);
+          });
+      }
+    });
+  };
 
-
-
+  
+  
     return (
         <div>
            <Card className=" my-4">
@@ -131,9 +164,7 @@ const handleDeleteBtn = id=>{
             </tr>
           </thead>
           {toys
-  .filter((toy) =>
-    toy.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+ .filter((toy) => toy && toy.name && toy.name.toLowerCase().includes(searchTerm.toLowerCase()))
   // .slice(0, 20)
   .map((toy) => (
         <tbody key={toy._id}  >
@@ -143,7 +174,7 @@ const handleDeleteBtn = id=>{
             <td className="text-xl ">{toy.sub_category}</td>
             <td className="text-xl">{toy.available_quantity}</td>
             <td className="text-xl">{user && user.displayName|| toy.sellerName }</td>
-            <td className="text-xl"><UpdateToy handleInputChange={handleInputChange} handleSubmit={handleSubmit} toyData ={toyData} setToyData={setToyData}  toy={toy}/></td>
+            <td className="text-xl"><UpdateToy  user={user} toy={toy} toys={toys} setToys={setToys}/></td>
             
              </tbody>
       ))}

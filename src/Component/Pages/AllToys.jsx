@@ -21,11 +21,13 @@ const TABLE_HEAD = ["ToyName", "Price", "Sub-category", "Available Quantity", "S
 
  
 export default function AllToys() {
+
   const [toys, setToys] = useState([]);
   useEffect(() => {
     fetch("https://super-hero-toy-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setToys(data);
       });
   }, []);
@@ -80,11 +82,9 @@ export default function AllToys() {
             </tr>
           </thead>
           {toys
-  .filter((toy) =>
-    toy.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-  // .slice(0, 20)
-  .map((toy) => (
+   .filter((toy) => toy && toy.name && toy.name.toLowerCase().includes(searchTerm.toLowerCase()))
+// .slice(0, 20)
+.map((toy) => (
         <tbody key={toy._id}  >
           
             <td className="p-4 text-xl font-semibold flex items-center"> <Avatar src={toy.picture_url} alt="avatar" size="lg" variant="rounded" withBorder={true} color="green" className="p-0.5" /><p className="pl-2" >{toy.name}</p></td>
